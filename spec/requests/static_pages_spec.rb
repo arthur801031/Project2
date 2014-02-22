@@ -45,6 +45,24 @@ describe "Static pages" do
     it_should_behave_like "all static pages"
   end
 
+  describe "FAQ page" do
+    before { visit faq_path }
+
+    let(:heading)    { 'FAQ' }
+    let(:page_title) { 'FAQ' }
+
+    it_should_behave_like "all static pages"
+  end
+
+  describe "Blog page" do
+    before { visit blog_path }
+
+    let(:heading)    { 'Blog' }
+    let(:page_title) { 'Blog' }
+
+    it_should_behave_like "all static pages"
+  end
+
   it "should have the right links on the layout" do
     visit root_path
     click_link "About"
@@ -53,6 +71,10 @@ describe "Static pages" do
     expect(page).to have_title(full_title('Help'))
     click_link "Contact"
     expect(page).to have_title(full_title('Contact'))
+    click_link "FAQ"
+    expect(page).to have_title(full_title('FAQ'))
+    click_link "Blog"
+    expect(page).to have_title(full_title('Blog'))
     click_link "Home"
     expect(page).to have_title(full_title(''))
     click_link "Sign up now!"
